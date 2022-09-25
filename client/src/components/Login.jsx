@@ -1,4 +1,5 @@
 import {Box, styled, Typography, FormControl, FormGroup, InputLabel, Input, Button} from '@mui/material'
+import {NavLink} from 'react-router-dom'
 
 const Container = styled(Box)`
     width: 100%;
@@ -10,11 +11,12 @@ const CandidateLogin = styled(Box)`
     width: 40%;
     height: 500px;
     margin-top: 20px;
+    margin-left: 80px;
 `;
 const RecruiterLogin = styled(Box)`
     width: 40%;
     height: 500px;
- 
+    margin-right: 80px;
     margin-top: 20px;
 `;
 const CandidateHeading = styled(Typography)`
@@ -29,9 +31,10 @@ const Login = () => {
   return (
     <Container>
 
-        <CandidateLogin>
+        <CandidateLogin> 
+             {/* // candidate login code */}
 
-            <CandidateHeading variant='h5'>Login Candidate</CandidateHeading>
+            <CandidateHeading variant='h5' >Login Candidate</CandidateHeading>
 
             <FormGroup>
                 <FormControl>
@@ -42,12 +45,15 @@ const Login = () => {
                     <InputLabel>Password</InputLabel>
                     <Input />
                 </FormControl>
-                <Button variant='contained'>Login</Button>
+                    <NavLink to='/applyview'>
+                    <Button variant='contained' style={{width: '100%'}}>Login</Button>
+                    </NavLink>
             </FormGroup>
 
         </CandidateLogin>
 
 <hr></hr>
+ {/* // recruiter login code login code */}
         <RecruiterLogin>
 
             <RecruiterHeading variant='h5'>Login Recruiter</RecruiterHeading>
@@ -61,7 +67,10 @@ const Login = () => {
                     <InputLabel>Password</InputLabel>
                     <Input />
                 </FormControl>
-                <Button variant='contained'>Login</Button>
+                    <NavLink to='/add'>
+                    <Button variant='contained' style={{width: '100%'}}>Login</Button>
+                  
+                    </NavLink>
           </FormGroup>
 
         </RecruiterLogin>

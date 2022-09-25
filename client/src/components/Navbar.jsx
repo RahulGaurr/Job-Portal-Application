@@ -12,11 +12,11 @@ const Logo = styled(NavLink)`
     
 `
 
-const Navbar = () => {
+const Navbar = () => { // navbar with logo and login option
   return (
    <Header position='static'>
     <Toolbar>
-        <Logo to='apply'>Job Portal</Logo>
+        <Logo to='applyview'>Job Portal</Logo>
         <Logo to='/' style={{marginLeft: '80%'}}>Login</Logo>
     </Toolbar>
    </Header>

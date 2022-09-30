@@ -1,10 +1,11 @@
 import './App.css';
 import AddJob from './components/AddJob';
-import ApplyJob from './components/ApplyJob';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import ApplyView from './components/ApplyView';
 import ApplyNewJob from './components/ApplyNewJob';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
 
 function App() {
   return (
@@ -13,10 +14,9 @@ function App() {
       <Navbar />
         <Routes>
          <Route path='/' element={ <Login />} />
-         <Route path='/applyview' element={ <ApplyJob />} />
+         <Route path='/applyview' element={ <ApplyView />} />
          <Route path='/add' element={ <AddJob />} />
-         <Route path='/applyjob' element={<ApplyNewJob />}></Route>
-          
+         <Route path='/applyjob' element={ <ApplyNewJob />} />     
       </Routes>
    </BrowserRouter>
    

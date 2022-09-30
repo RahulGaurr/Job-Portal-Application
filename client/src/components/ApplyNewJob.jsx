@@ -1,8 +1,7 @@
-import { addApplicant } from '../service/api';
-
-import {styled, Typography, Box, FormControl, FormGroup, InputLabel, Input, Button} from '@mui/material'
+import {styled,  Box, FormControl, FormGroup, InputLabel, Input, Button} from '@mui/material'
+import {newCandidateApply} from '../service/api'
 import { useState } from 'react';
-
+import { NavLink } from 'react-router-dom';
 
 const Container = styled(Box)`
     width: 100%;
@@ -10,80 +9,75 @@ const Container = styled(Box)`
 `;
 
 const Wrapper = styled(Box)`
-    width:30%;
+    width:20%;
     height: 400px;
+    margin: auto;
+    margin-top: 20px;
 `;
 
-const defaultValues = {
+
+const defaultValue = {
     name: '',
     email: '',
-    experience:'',
-    ctc: '',
-    description: ''
+    experience: '',
+    ctc:''
 }
 
 
-const ApplyNewJob = () => {
+    const ApplyNewJob = () => {
+      
 
-    const [apply, setApply] = useState(defaultValues);
+      const [apply, setApply] = useState(defaultValue);
+ 
     
     const onValueChange = (e) => {
    
         setApply({...apply, [e.target.name]: e.target.value})
     }
 
-    const addApplicantDetails = async () => {
-      await  addApplicant(apply)
-    }
+    const handleApply = async () => {
+      await newCandidateApply(apply)
+     
+    } 
+    
+
 
   return (
    <Container>
 
       <Wrapper>
-        <Typography style={{textAlign: 'center',fontWeight: 'bolder', background: 'red' }}>Apply for New Job</Typography>
         <FormGroup>
             <FormControl>
             <InputLabel>Name</InputLabel>
-            <Input onChange={(e) =>  onValueChange(e)} name='name'  />
+            <Input onChange={(e) =>  onValueChange(e)} name='name' />
             </FormControl>
             <FormControl>
             <InputLabel>Email Address</InputLabel>
-            <Input onChange={(e) =>  onValueChange(e)} name='email'/>
+            <Input  onChange={(e) =>  onValueChange(e)} name='email'/>
             </FormControl>
             <FormControl>
-            <InputLabel>Experience (if any)</InputLabel>
-            <Input onChange={(e) =>  onValueChange(e)} name='experience' />
+            <InputLabel>Experience</InputLabel>
+            <Input onChange={(e) =>  onValueChange(e)} name='experience'/>
             </FormControl>
             <FormControl>
-            <InputLabel>expected CTC</InputLabel>
-            <Input onChange={(e) =>  onValueChange(e)} name='ctc'/>
+            <InputLabel>Expected CTC</InputLabel>
+            <Input onChange={(e) =>  onValueChange(e)} name='ctc' />
             </FormControl>
-            <FormControl>
-            <InputLabel>Description</InputLabel>
-            <Input onChange={(e) =>  onValueChange(e)} name='Description'/>
-          </FormControl>
-          
-          
-
-         
         </FormGroup>
-        <Typography style={{marginTop: 10, fontSize: '12px', fontFamily:'sans-serif' }}>Upload Your Resume</Typography>
-        <Button variant="contained"
-            component="label" 
->
-            Upload File
+        <Button component="label">
+            Upload Resume
             <input type="file" hidden/> 
-            <br ></br>
-          </Button>
-          <Button variant='contained' onClick={() => addApplicantDetails()} style={{background:'red'}}>Post Job</Button>
-
+          </Button> <br></br> <br></br>
+          
+          <NavLink to='/applyview' style={{textDecoration:'none'}}>
+          <Button variant='contained'onClick={() => handleApply()}>Submit</Button>
+          </NavLink>
       </Wrapper>
 
     
    </Container>
   )
 }
-
-
-
+  
 export default ApplyNewJob
+

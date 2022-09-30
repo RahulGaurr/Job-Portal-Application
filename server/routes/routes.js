@@ -1,10 +1,13 @@
-import express, {Router} from 'express'
-import {addUser} from '../controller/user-controller.js'
+import express from 'express'
+import {addJob,getJobs, applyCandidate, getCandidates } from '../controller/job-controller.js';
 
 
 const router = express.Router();
 
-router.post('/applyjob', addUser)
+router.post('/add', addJob)
+router.get('/applyview', getJobs)
+router.post('/applyjob', applyCandidate)
+router.get('/add',getCandidates)
 
 
 export default router
